@@ -1,4 +1,5 @@
-var CACHE_NAME = 'restaurant-cache-1';
+var staticCacheName = 'restaurant-v1';
+var imageCacheName = 'mws-image';
 var urlsToCache = [
     '/',
     'index.html',
@@ -10,25 +11,18 @@ var urlsToCache = [
     'js/idb.js',
     'js/IndexController.js',
     'js/restaurant_info.js',
-    'data/restaurants.json',
-    'img/1.jpg',
-    'img/2.jpg',
-    'img/3.jpg',
-    'img/4.jpg',
-    'img/5.jpg',
-    'img/6.jpg',
-    'img/7.jpg',
-    'img/8.jpg',
-    'img/9.jpg',
-    'img/10.jpg'
+    'data/restaurants.json'
+];
+var allCaches = [
+    staticCacheName,
+    imageCacheName
 ];
 
 // install cache from serviceWorker
 self.addEventListener('install', function (event) {
   // Perform install steps
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function (cache) {
+    caches.open(staticCacheName).then(function (cache) {
         console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
@@ -36,27 +30,55 @@ self.addEventListener('install', function (event) {
 });
 
 // activate cache from serviceWorker
-self.addEventListener('activate',  event => {
+self.addEventListener('activate', function (event) {
     event.waitUntil(
       caches.keys().then(function(cacheNames) {
         return Promise.all(
-          cacheNames.filter(function(cacheName) {
-            return cacheName.startsWith('restaurant-') &&
-                   cacheName != CACHE_NAME;
-          }).map(function(cacheName) {
-            return caches.delete(cacheName);
-          })
+            cacheNames.filter(function(cacheName) {
+                return cacheName.startsWith('restaurant-') &&
+                   !allCaches.includes(cacheName)
+            }).map(function(cacheName) {
+                return caches.delete(cacheName);
+            })
         );
       })
     );
 });
 
 
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request, {ignoreSearch:true}).then(response => {
-      return response || fetch(event.request);
+self.addEventListener('fetch', function(event) {
+    var requestUrl = new URL(event.request.url);
+
+    if(requestUrl.pathname.startsWith("/img")) {
+        event.respondWith(servePhoto(event.request));
+        return;
+    }
+    
+    event.respondWith(
+        caches.match(event.request).then(function(response) {
+            // console.log('resonse from cache', response);
+            if(response) return response;
+            // console.log('fetch event request', event.request);
+            return fetch(event.request);
     })
-    .catch(err => console.log(err, event.request))
-  );
+    );
 });
+
+function servePhoto(request) {
+
+    var storageUrlRep = request.url.replace(/-\w+\.jpg$/, '');
+
+    return caches.open(imageCacheName).then(function(cache) {
+        return cache.match(storageUrlRep).then(function (response) {
+            // console.log('response',response);
+             if(response) return response;
+
+            return fetch(request).then(function(networkResponse) {
+                // console.log('networkResponse', networkResponse)
+                cache.put(storageUrlRep, networkResponse.clone());
+                return networkResponse
+            })
+        })
+    })
+
+}

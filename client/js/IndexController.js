@@ -1,4 +1,5 @@
-port = '3000';
+const port = 1337; // Change this to your server port
+
 // <!-- Service Worker Registration -->
 registerServiceWorker = () => {
   if (!navigator.serviceWorker) return;
@@ -27,15 +28,10 @@ openDatabase = () => {
 }
 const dbPromise = openDatabase();
 
-fetch_url = '';
-if (port) fetch_url = 'http://localhost:'+port+'/restaurants';
-else fetch_url = 'http://localhost:3000/restaurants';
-fetch(fetch_url)
-  .then(function(response) {
+fetch(`http://localhost:${port}/restaurants`).then(function(response) {
     console.log(response)
     return response.json();
-  })
-  .then(function(restaurants) {
+  }).then(function(restaurants) {
     console.log("Restaurants: ", restaurants)
     dbPromise.then(function(db) {
       if(!db) return;
@@ -45,7 +41,6 @@ fetch(fetch_url)
         store.put(restaurant)
       })
     })
-  })
-  .catch((err) => {
+  }).catch((err) => {
     console.log("Error fetching data.")
   });

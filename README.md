@@ -2,11 +2,11 @@
 ## Usage
 #### Get Restaurants
 ```
-curl "http://localhost:1337/restaurants"
+curl "http://localhost:3000/restaurants"
 ```
 #### Get Restaurants by id
 ````
-curl "http://localhost:1337/restaurants/{3}"
+curl "http://localhost:3000/restaurants/{3}"
 ````
 
 ## Architecture
@@ -45,7 +45,7 @@ Let's start with running commands in your terminal, known as command line interf
 ```
 ### You should now have access to your API server environment
 debug: Environment : development
-debug: Port        : 1337
+debug: Port        : 3000
 
 
 If you find a bug in the source code or a mistake in the documentation, you can help us by

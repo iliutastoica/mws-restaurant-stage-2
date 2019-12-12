@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.5
+version: v1.14.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -114,3 +114,6 @@ patch:
   'npm:stringstream:20180511':
     - sails > grunt-contrib-less > less > request > stringstream:
         patched: '2019-09-07T18:00:55.286Z'
+  SNYK-JS-TREEKILL-536781:
+    - snyk > snyk-sbt-plugin > tree-kill:
+        patched: '2019-12-12T04:24:17.258Z'

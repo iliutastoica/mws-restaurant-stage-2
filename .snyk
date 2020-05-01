@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.5
+version: v1.14.1
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -114,3 +114,38 @@ patch:
   'npm:stringstream:20180511':
     - sails > grunt-contrib-less > less > request > stringstream:
         patched: '2019-09-07T18:00:55.286Z'
+  SNYK-JS-LODASH-567746:
+    - snyk > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - sails > async > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - sails-disk > async > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - snyk > inquirer > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - snyk > snyk-config > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - snyk > snyk-mvn-plugin > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - sails > machinepack-redis > async > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - sails > sails-generate > async > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - sails > skipper > async > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
+        patched: '2020-05-01T04:24:24.643Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2020-05-01T04:24:24.643Z'

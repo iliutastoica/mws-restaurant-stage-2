@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.5
+version: v1.25.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -58,6 +58,18 @@ patch:
         patched: '2019-09-07T18:00:55.286Z'
     - sails > sails-disk > waterline-cursor > lodash:
         patched: '2019-09-07T18:00:55.286Z'
+    - sails-disk > machinepack-fs > machine > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - sails-disk > machinepack-fs > machinepack-strings > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - sails-disk > machinepack-fs > machinepack-util > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - sails-disk > machinepack-fs > machinepack-json > machine > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - sails-disk > machinepack-fs > machinepack-strings > machine > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - sails-disk > machinepack-fs > machinepack-util > machine > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
   'npm:mime:20170907':
     - sails > grunt-contrib-less > less > mime:
         patched: '2019-09-07T18:00:55.286Z'
@@ -114,3 +126,46 @@ patch:
   'npm:stringstream:20180511':
     - sails > grunt-contrib-less > less > request > stringstream:
         patched: '2019-09-07T18:00:55.286Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - snyk > proxy-agent > https-proxy-agent:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2022-10-07T22:57:26.681Z'
+  SNYK-JS-LODASH-567746:
+    - snyk > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - sails > async > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - sails-disk > async > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > inquirer > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > snyk-config > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > snyk-mvn-plugin > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - sails > machinepack-redis > async > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - sails > sails-generate > async > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - sails > skipper > async > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2022-10-07T22:57:26.681Z'
+  SNYK-JS-TREEKILL-536781:
+    - snyk > snyk-sbt-plugin > tree-kill:
+        patched: '2022-10-07T22:57:26.681Z'
